@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  whisper:
+    build: .
+    volumes:
+      - ./audio:/app/audio
+      - ./transcriptions:/app/transcriptions
+    command: python main.py
