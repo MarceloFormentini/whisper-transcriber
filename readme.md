@@ -36,7 +36,7 @@ python main.py
 A transcrição será salva na pasta `transcriptions/`.
 
 ## 🧠 Tecnologias
-- Python
+- Python 3.10
 - Whisper (OpenAI)
 - PyTorch
 
