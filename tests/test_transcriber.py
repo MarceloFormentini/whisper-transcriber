@@ -18,13 +18,14 @@ def test_transcribe_audio_file_not_found():
         transcribe_audio("audio/nao_existe.mp3")
 
 def test_transcribe_with_different_model():
-    audio_path = "audio/exemplo.mp3"
+    audio_path = "audio/exemplo.m4a"
     result = transcribe_audio(audio_path, model_size="base")
     assert isinstance(result, str)
     assert len(result.strip()) > 0
 
 @patch("app.transcriber.whisper.load_model")
-def test_transcribe_mocked(mock_load_model):
+@patch("app.transcriber.os.path.exists", return_value=True)
+def test_transcribe_mocked(mock_exists, mock_load_model):
     mock_model = mock_load_model.return_value
     mock_model.transcribe.return_value = {"text": "Texto simulado"}
 
